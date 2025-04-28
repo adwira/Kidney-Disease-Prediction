@@ -6,6 +6,7 @@ import { predictKidneyDisease } from '../utils/api';
 import { useState } from 'react';
 import PredictionForm from '../components/PredictionForm';
 import '../styles/result.css'; // Buat file CSS khusus
+import '../styles/disclaimer.css'; 
 
 const Home = () => {
   const [result, setResult] = useState(null);
@@ -45,17 +46,18 @@ const Home = () => {
       {/* Sidebar Result */}
       <div className={`result-sidebar ${result?.prediction || 'default'}`}>
         {!result ? (
-          <div className="welcome-message">
-            <h2>Selamat Datang</h2>
-            <p>
-              Sistem prediksi penyakit ginjal menggunakan AI untuk menganalisis data kesehatan Anda.
-              Hasil prediksi ini hanya sebagai referensi awal dan tidak menggantikan diagnosis dokter.
+          <div className="disclaimer-box">
+            <h3>Penting: Informasi Diagnosa</h3>
+              <p>
+              Website ini menyediakan <strong>prediksi awal berbasis AI</strong> dan 
+              <strong> tidak menggantikan diagnosis dokter</strong>. Hasil yang diberikan 
+              merupakan perkiraan berdasarkan data terbatas dan membutuhkan konfirmasi lebih 
+              lanjut melalui pemeriksaan medis oleh profesional kesehatan.
             </p>
-            <ul>
-              <li>Hasil akurat berbasis AI</li>
-              <li>Analisis faktor risiko</li>
-              <li>Rekomendasi tindakan</li>
-            </ul>
+            <p>
+              Konsultasikan hasil ini dengan <strong>dokter spesialis ginjal</strong> untuk 
+              evaluasi menyeluruh dan rencana penanganan yang tepat.
+            </p>
           </div>
         ) : (
           <div className="prediction-result">

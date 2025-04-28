@@ -5,6 +5,7 @@ body, #root {
     padding: 0;
     width: 100%; /* Memastikan elemen mengambil lebar penuh */
     height: 100%; /* Memastikan elemen mengambil tinggi penuh */
+    font-family: 'Poppins', sans-serif;
   }
   
   /* Memastikan html juga mengambil lebar dan tinggi penuh */

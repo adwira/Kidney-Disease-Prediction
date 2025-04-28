@@ -1,4 +1,22 @@
 /* Layout */
+/* src/styles/globals.css */
+.disclaimer-box {
+  background-color: #FFF9E6;
+  border-left: 4px solid #FFC107;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.disclaimer-box h3 {
+  color: #E74C3C;
+  margin-bottom: 0.5rem;
+}
+
+.disclaimer-box p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
 .home-container {
     display: flex;
     min-height: calc(100vh - 60px); /* Sesuaikan dengan tinggi header */

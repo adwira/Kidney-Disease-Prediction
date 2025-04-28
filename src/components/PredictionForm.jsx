@@ -71,7 +71,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
     <form className="prediction-form" onSubmit={handleSubmit}>
       {/* General Info Section */}
       <div className="form-section">
-        <h2>General Info</h2>
+        <h2>Informasi Umum</h2>
         <div className="input-grid">
           <div className="input-group">
             <label>Usia</label>
@@ -144,7 +144,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
 
       {/* Lab Results Section */}
       <div className="form-section">
-        <h2>Lab Results</h2>
+        <h2>Hasil Laboratorium</h2>
         <div className="input-grid">
           <div className="input-group">
             <label>Sel Darah Merah</label>
@@ -285,7 +285,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
 
       {/* Symptoms & History Section */}
       <div className="form-section">
-        <h2>Symptoms & History</h2>
+        <h2>Gejala & Riwayat Penyakit</h2>
         <div className="input-grid">
           <div className="input-group">
             <label>Hipertensi</label>
@@ -310,7 +310,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
             <RadioGroup
               name="coronary_artery_disease"
               value={formData.coronary_artery_disease}
-              options={['Ya', 'No']}
+              options={['Ya', 'Tidak']}
             />
           </div>
 
@@ -339,7 +339,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
         disabled={loading} 
         className="predict-button"
       >
-        {loading ? 'Memproses...' : 'Predict'}
+        {loading ? 'Memproses...' : 'Prediksi'}
       </button>
     </form>
   );
