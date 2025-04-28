@@ -1,0 +1,12 @@
+.contact-page {
+    background: url('../assets/images/contact-bg.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  
+  .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
