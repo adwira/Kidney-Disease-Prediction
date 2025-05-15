@@ -86,7 +86,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
           </div>
 
           <div className="input-group">
-            <label>Tekanan Darah</label>
+            <label>Tekanan Darah (mm Hg)</label>
             <input
               type="number"
               name="blood_pressure"
@@ -97,7 +97,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
           </div>
 
           <div className="input-group">
-            <label>Berat Jenis Urin</label>
+            <label>Berat Jenis Urin (mgs/dl)</label>
             <select
               name="specific_gravity"
               value={formData.specific_gravity}
@@ -121,7 +121,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
           </div>
 
           <div className="input-group">
-            <label>Gula dalam Urin</label>
+            <label>Gula dalam Urin (mgs/dl)</label>
             <select
               name="sugar"
               value={formData.sugar}
@@ -183,7 +183,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
           </div>
 
           <div className="input-group">
-            <label>Gula Darah</label>
+            <label>Gula Darah (mgs/dl)</label>
             <input
               type="number"
               name="blood_glucose"
@@ -194,7 +194,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
           </div>
 
           <div className="input-group">
-            <label>Urea Darah</label>
+            <label>Urea Darah (mgs/dl)</label>
             <input
               type="number"
               name="blood_urea"
@@ -205,7 +205,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
           </div>
 
           <div className="input-group">
-            <label>Serum Kreatinin</label>
+            <label>Serum Kreatinin (mgs/dl)</label>
             <input
               type="number"
               name="serum_creatinine"
@@ -216,7 +216,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
           </div>
 
           <div className="input-group">
-            <label>Natrium</label>
+            <label>Natrium (mEq/L)</label>
             <input
               type="number"
               name="sodium"
@@ -227,7 +227,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
           </div>
 
           <div className="input-group">
-            <label>Kalium</label>
+            <label>Kalium (mEq/L)</label>
             <input
               type="number"
               name="potassium"
@@ -260,7 +260,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
           </div>
 
           <div className="input-group">
-            <label>Jumlah Sel Darah Putih</label>
+            <label>Jumlah Sel Darah Putih (cells/cumm)</label>
             <input
               type="number"
               name="white_cell_count"
@@ -271,7 +271,7 @@ const PredictionForm = ({ onSubmit, loading }) => {
           </div>
 
           <div className="input-group">
-            <label>Jumlah Sel Darah Merah</label>
+            <label>Jumlah Sel Darah Merah (millions/cmm)</label>
             <input
               type="number"
               name="red_cell_count"

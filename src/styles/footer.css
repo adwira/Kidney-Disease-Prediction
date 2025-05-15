@@ -1,0 +1,46 @@
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  background-color: #4A90E2;
+  color: white;
+  padding: 0.8rem 0;
+  width: 100%;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: auto; /* Memastikan footer selalu di bawah */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #90caf9;
+}
+
+/* Hanya menerapkan flex: 1 pada about-page dan contact-page */
+.about-page,
+.contact-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+} 

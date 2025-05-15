@@ -7,41 +7,50 @@ export async function predictKidneyDisease(formData) {
     try {
         // const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-        const prompt = `Berdasarkan data pasien berikut, prediksi apakah pasien tersebut memiliki penyakit ginjal (berikan label 1 jika ya, 0 jika tidak): 
-        Age: ${formData.age}, 
-        BloodPressure: ${formData.blood_pressure}, 
-        Specific Gravity: ${formData.specific_gravity}, 
-        Albumin: ${formData.albumin}, 
-        Sugar: ${formData.sugar}, 
-        RedBloodCells: ${formData.red_blood_cells === 'normal' ? 0 : 1}, 
-        Pus Cell: ${formData.pus_cell === 'normal' ? 0 : 1}, 
-        PusCellclumps: ${formData.pus_cell_clumps === 'present' ? 1 : 0}, 
-        Bacteria: ${formData.bacteria === 'present' ? 1 : 0}, 
-        BloodGlucoseRandom: ${formData.blood_glucose}, 
-        BloodUrea: ${formData.blood_urea}, 
-        SerumCreatinine: ${formData.serum_creatinine}, 
-        Sodium: ${formData.sodium}, 
-        Potassium: ${formData.potassium}, 
-        Hemoglobin: ${formData.hemoglobin}, 
-        PackedCellVolume: ${formData.packed_cell_volume}, 
-        WhiteBloodCell: ${formData.white_cell_count}, 
-        RedBloodCel Count: ${formData.red_cell_count}, 
-        Hypertension: ${formData.hypertension === 'yes' ? 1 : 0}, 
-        DiabetesMellitus: ${formData.diabetes_mellitus === 'yes' ? 1 : 0}, 
-        CoronaryArtery Disease: ${formData.coronary_artery_disease === 'yes' ? 1 : 0}, 
-        Appetite: ${formData.appetite === 'good' ? 0 : 1}, 
-        PedalEdema: ${formData.pedal_edema === 'yes' ? 1 : 0}, 
+        const prompt = `
+        Kamu adalah asisten medis berpengalaman.  
+        Tugasmu:
+        1. Berdasarkan data pasien di bawah ini, prediksi apakah pasien memiliki penyakit ginjal (label 1 = ya, 0 = tidak).  
+        2. Jika label = 1, sertakan juga kode ICD-10 yang paling mungkin, beserta penjelasan singkat tentang arti kode itu dan mengapa dipilih (misal: keterbatasan data, stadium, dll).  
+        3. Akhiri dengan disclaimer bahwa ini hanya prediksi percobaan dan bukan pengganti diagnosa dokter.
+
+        **Data Pasien (isi numeric atau 0/1 sesuai field):**  
+        Age: ${formData.age}  
+        BloodPressure: ${formData.blood_pressure}  
+        SpecificGravity: ${formData.specific_gravity}  
+        Albumin: ${formData.albumin}  
+        Sugar: ${formData.sugar}  
+        RedBloodCells: ${formData.red_blood_cells === 'normal' ? 0 : 1}  
+        PusCell: ${formData.pus_cell === 'normal' ? 0 : 1}  
+        PusCellClumps: ${formData.pus_cell_clumps === 'present' ? 1 : 0}  
+        Bacteria: ${formData.bacteria === 'present' ? 1 : 0}  
+        BloodGlucoseRandom: ${formData.blood_glucose}  
+        BloodUrea: ${formData.blood_urea}  
+        SerumCreatinine: ${formData.serum_creatinine}  
+        Sodium: ${formData.sodium}  
+        Potassium: ${formData.potassium}  
+        Hemoglobin: ${formData.hemoglobin}  
+        PackedCellVolume: ${formData.packed_cell_volume}  
+        WhiteBloodCellCount: ${formData.white_cell_count}  
+        RedBloodCellCount: ${formData.red_cell_count}  
+        Hypertension: ${formData.hypertension === 'yes' ? 1 : 0}  
+        DiabetesMellitus: ${formData.diabetes_mellitus === 'yes' ? 1 : 0}  
+        CoronaryArteryDisease: ${formData.coronary_artery_disease === 'yes' ? 1 : 0}  
+        Appetite: ${formData.appetite === 'good' ? 0 : 1}  
+        PedalEdema: ${formData.pedal_edema === 'yes' ? 1 : 0}  
         Anemia: ${formData.anemia === 'yes' ? 1 : 0}
-        
-        Jika terprediksi penyakit ginjal (label 1), berikan prediksi kode ICD-10 yang paling mungkin.
-        Hasil prediksi hanya sebagai percobaan tidak akan menggantikan diagnosa dokter ahli.
-        
-        Berikan output/return dalam format JSON seperti ini:
+
+        **Instruksi Format Output (harus JSON, gunakan Bahasa Indonesia):**  
+        \`\`\`json
         {
-            "label": 1 atau 0,
-            "Kesimpulan Prediksi": "",
-            "Prediksi Kode ICD-10": "berikan prediksi ICD-10 jika label = 1, dan kosongan bagian ini jika label 0"
-        }`;
+        "label": 0 | 1,
+        "kesimpulan": "…",
+        "kode_icd10": "…",
+        "penjelasan_icd10": "…",
+        "disclaimer": "…"
+        }
+        \`\`\`
+        `;
 
         // const result = await ai.model.generateContent(prompt);
         const response = await ai.models.generateContent({
@@ -58,6 +67,7 @@ export async function predictKidneyDisease(formData) {
             throw new Error('Tidak dapat menemukan JSON dalam response');
         }
         const jsonResponse = JSON.parse(jsonMatch[0]);
+        console.log(jsonResponse);
         return jsonResponse;
         // Parse JSON response
         // const jsonResponse = JSON.parse(text);

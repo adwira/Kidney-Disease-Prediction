@@ -4,9 +4,106 @@
     padding: 2rem;
   }
   
+  .content-container {
+    background: rgba(245, 247, 250, 0.95);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content-container h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    border-bottom: 2px solid #4A90E2;
+    padding-bottom: 0.5rem;
+  }
+  
   .contact-methods {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
     margin-top: 2rem;
+    flex-wrap: nowrap;
+  }
+  
+  .contact-item {
+    flex: 1;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 1.2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-item:hover .contact-icon {
+    transform: scale(1.1);
+  }
+  
+  .contact-icon.linkedin {
+    color: #0077B5;
+  }
+  
+  .contact-icon.gmail {
+    color: #EA4335;
+  }
+  
+  .contact-icon.instagram {
+    color: #E4405F;
+  }
+  
+  .contact-item h3 {
+    color: #2c3e50;
+    margin: 0.3rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .contact-item p {
+    color: #666;
+    margin: 0;
+    font-size: 0.85rem;
+    text-align: center;
+    word-break: break-word;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .contact-page {
+      padding: 1rem;
+    }
+  
+    .content-container {
+      padding: 1.5rem;
+    }
+  
+    .contact-methods {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .contact-item {
+      width: 100%;
+      max-width: 300px;
+    }
   }

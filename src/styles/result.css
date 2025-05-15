@@ -1,92 +1,189 @@
 /* Layout */
-/* src/styles/globals.css */
-.disclaimer-box {
-  background-color: #FFF9E6;
-  border-left: 4px solid #FFC107;
-  padding: 1rem;
-  margin: 1.5rem 0;
-  border-radius: 0 4px 4px 0;
-}
-
-.disclaimer-box h3 {
-  color: #E74C3C;
-  margin-bottom: 0.5rem;
-}
-
-.disclaimer-box p {
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
 .home-container {
     display: flex;
-    min-height: calc(100vh - 60px); /* Sesuaikan dengan tinggi header */
-  }
+    flex-direction: row; /* Memastikan layout horizontal */
+    gap: 1rem; /* Mengurangi gap dari 2rem menjadi 1rem */
+    padding: 1rem; /* Mengurangi padding dari 1rem 2rem menjadi 1rem */
+    flex: 1;
+    min-height: calc(100vh - 60px); /* Memastikan container memiliki tinggi minimal */
+}
   
-  .form-section {
-    flex: 3;
+.form-section {
+    flex: 2.5; /* Mengurangi flex dari 3 menjadi 2.5 */
     /* padding: 1rem; */
     margin-top: 1rem;
-    
-  }
+}
   
-  .result-sidebar {
-    flex: 1.2;
-    padding: 1rem;
-    transition: all 0.3s ease;
-    margin: 1rem auto;
-    margin-left: 1rem;
+.result-sidebar {
+    flex: 1.5; /* Meningkatkan flex dari 1.2 menjadi 1.5 */
+    padding: 0.8rem; /* Mengurangi padding dari 1rem menjadi 0.8rem */
+    transition: background-color 0.3s ease; /* Hanya transisi untuk background */
+    margin: 1rem 0;
     background: #F5F7FA;
     border-radius: 8px;
     box-shadow: 4px 8px 4px rgba(0,0,0,0.1);
     border: 1px solid #d2d2d2;
-  }
+    height: fit-content; /* Menyesuaikan tinggi dengan konten */
+    align-self: flex-start; /* Memastikan sidebar tetap di atas */
+}
   
-  /* Tampilan Default (Belum Prediksi) */
-  .result-sidebar.default {
+/* Tampilan Default (Belum Prediksi) */
+.result-sidebar.default {
     background: #F5F7FA; /* Warna latar default */
-    border-left: 1px solid #eee;
-  }
+    border: 1px solid #d2d2d2;
+}
   
-  /* Hasil Sehat */
-  .result-sidebar.negative {
-    background: rgba(80, 227, 194, 0.4); /* Hijau transparan */
-  }
+/* Hasil Sehat */
+.result-sidebar.negative {
+    /* background: rgba(80, 227, 194, 0.4); Hijau transparan */
+    border: 1px solid #50e3c2;
+}
   
-  /* Hasil Sakit */
-  .result-sidebar.positive {
-    background: rgba(231, 76, 60, 0.6); /* Merah transparan */
-  }
+/* Hasil Sakit */
+.result-sidebar.positive {
+    /* background: rgba(231, 76, 60, 0.6); Merah transparan */
+    border: 1px solid #e74c3c;
+}
   
-  /* Komponen Hasil */
-  .welcome-message, .prediction-result {
+/* Komponen Hasil */
+.welcome-message, .prediction-result {
     padding: 1rem;
-  }
+}
   
-  .result-status span {
+.result-status span {
     font-weight: bold;
     margin-left: 0.5rem;
-  }
+}
   
-  .result-status .positive {
+.result-status .positive {
     color: #e81801;
-  }
+}
   
-  .result-status .negative {
+.result-status .negative {
     color: #08b651;
-  }
+}
   
-  .risk-factors {
+.risk-factors {
     margin-top: 1rem;
-  }
+}
   
-  /* Responsive */
-  @media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 768px) {
     .home-container {
-      flex-direction: column;
+        flex-direction: column;
+        padding: 0.8rem; /* Mengurangi padding pada mobile */
     }
     
     .result-sidebar {
-      border-left: none;
-      border-top: 1px solid #eee;
+        margin: 0.8rem 0; /* Mengurangi margin pada mobile */
+        width: 100%;
     }
+}
+
+/* Styling untuk hasil prediksi */
+.prediction-result {
+  padding: 1rem; /* Mengurangi padding dari 1.5rem menjadi 1rem */
+}
+
+.prediction-result h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #4A90E2;
+  padding-bottom: 0.5rem;
+}
+
+.result-status {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  background: rgba(74, 144, 226, 0.1);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.result-status span {
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+}
+
+.result-status .positive {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.result-status .negative {
+  color: #27ae60;
+  background: rgba(39, 174, 96, 0.1);
+}
+
+.prediction-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.result-section {
+  background: #fff;
+  padding: 1rem; /* Mengurangi padding dari 1.2rem menjadi 1rem */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+}
+
+.result-section h3 {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.result-section p {
+  color: #34495e;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.icd-code {
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4A90E2;
+  background: rgba(74, 144, 226, 0.1);
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.disclaimer-section {
+  background: #FFF3E0;
+  border: 1px solid #FF9800;
+}
+
+.disclaimer-section h3 {
+  color: #E65100;
+}
+
+.disclaimer-section p {
+  color: #424242;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .prediction-result {
+    padding: 1rem;
   }
+
+  .result-section {
+    padding: 1rem;
+  }
+
+  .result-status {
+    font-size: 1rem;
+  }
+}
