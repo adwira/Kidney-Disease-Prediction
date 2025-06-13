@@ -1,12 +1,18 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: 'AIzaSyBfbcm4XpeECjZAfDDiA2eMCKsYzk2eZo0' });
+console.log('Environment variables:', import.meta.env);
+const API_KEY = import.meta.env.VITE_GOOGLE_AI_API_KEY;
+console.log('API Key:', API_KEY);
+
+if (!API_KEY) {
+    throw new Error('API key tidak ditemukan. Pastikan VITE_GOOGLE_AI_API_KEY sudah diset di .env file');
+}
+
+const ai = new GoogleGenAI({ apiKey: API_KEY });
 
 export async function predictKidneyDisease(formData) {
     console.log("in thh func");
     try {
-        // const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
         const prompt = `
         Kamu adalah asisten medis berpengalaman.  
         Tugasmu:
@@ -52,14 +58,12 @@ export async function predictKidneyDisease(formData) {
         \`\`\`
         `;
 
-        // const result = await ai.model.generateContent(prompt);
+        
         const response = await ai.models.generateContent({
             model: "models/gemini-2.0-flash",
             contents: prompt,
         });
-        // console.log(response.text);
-
-        // const response = await result.response;
+        
         const text = response.text;
         console.log(text);
         const jsonMatch = text.match(/\{[\s\S]*\}/);
@@ -67,11 +71,9 @@ export async function predictKidneyDisease(formData) {
             throw new Error('Tidak dapat menemukan JSON dalam response');
         }
         const jsonResponse = JSON.parse(jsonMatch[0]);
-        console.log(jsonResponse);
+        
         return jsonResponse;
-        // Parse JSON response
-        // const jsonResponse = JSON.parse(text);
-        // return jsonResponse;
+        
     } catch (error) {
         console.error('Error:', error);
         throw error;
